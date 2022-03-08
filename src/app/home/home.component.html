@@ -1,0 +1,24 @@
+<mat-card class="example-card">
+  <mat-card-title>Shiba Inu</mat-card-title>
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSouce" class="mat-elevation-z8">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Imagens">
+        <th mat-header-cell *matHeaderCellDef>Imagem</th>
+        <td mat-cell *matCellDef="let element">
+          <img [src]="element.detalhes?.sprites.front_default" />
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+  <mat-card-actions>
+    <ap-load-button (click)="load()"></ap-load-button>
+  </mat-card-actions>
+</mat-card>
