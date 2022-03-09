@@ -1,3 +1,4 @@
+import { PokemonComponent } from './pokemon/pokemon.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,6 +14,10 @@ const routes: Routes = [
   data: {
     title: 'Home'
   }
+},
+{
+  path: 'pokemon/:nome',
+  component: PokemonComponent
 },
 ];
 

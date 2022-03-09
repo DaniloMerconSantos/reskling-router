@@ -22,8 +22,7 @@ export class HomeService {
     return this.http.get(API, { params });
   }
 
-  obterDetalhes (url: string): Observable<any> {
-    return this.http.get(url);
+  obterDetalhes (nome: string): Observable<any> {
+    return this.http.get(API + nome);
   }
-
 }

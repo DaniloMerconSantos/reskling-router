@@ -10,7 +10,11 @@
       <ng-container matColumnDef="Imagens">
         <th mat-header-cell *matHeaderCellDef>Imagem</th>
         <td mat-cell *matCellDef="let element">
-          <img [src]="element.detalhes?.sprites.front_default" />
+          <img
+            [src]="
+              element.detalhes?.sprites.other['official-artwork'].front_default
+            "
+          />
         </td>
       </ng-container>
 

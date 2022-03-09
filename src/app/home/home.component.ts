@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  detahlesPokemon(data: {url: string}[]) {
-    data.map((details: {url: string}, index: any) => {
-      this.pokemonService.obterDetalhes(details.url)
+  detahlesPokemon(data: {name: string}[]) {
+    data.map((details: {name: string}, index: any) => {
+      this.pokemonService.obterDetalhes(details.name)
       .subscribe( details => {
         this.dataSouce[index].detalhes = details;
       })
