@@ -1,6 +1,10 @@
 .card {
-  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  border-radius: 5px;
-  background-color: aqua;
+}
+
+.example-card {
+  max-width: 400px;
 }

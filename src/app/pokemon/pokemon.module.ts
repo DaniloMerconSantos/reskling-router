@@ -1,7 +1,7 @@
+import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { MaterialExampleModule } from './../../materil.module';
 import { MatNativeDateModule } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
 import { HomeRoutingModule } from './../home/home-routing.module';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -19,10 +19,10 @@ import { PokemonComponent } from './pokemon.component';
     CommonModule,
     RouterModule,
     HomeRoutingModule,
-    HttpClientModule,
     MatNativeDateModule,
     MaterialExampleModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ]
 })
 export class PokemonModule { }

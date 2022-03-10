@@ -1,5 +1,5 @@
+import { ActivatedRoute } from '@angular/router';
 import { HomeService } from './../home/home.service';
-import { HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RootObject } from './detalhe';
 
@@ -12,19 +12,19 @@ export class PokemonComponent implements OnInit {
 
   nomePokemon:string = '';
   dataSoucer:RootObject[]= [];
+  type: any[] = [];
 
   constructor(
-    private route: HttpParams,
+    private route: ActivatedRoute,
     private pokemonService: HomeService
   ) { }
 
   ngOnInit(): void {
-    // this.nomePokemon =  this.route.get('nome');
-    // console.log(this.nomePokemon)
-    // this.pokemonService.obterDetalhes(this.nomePokemon)
-    // .subscribe((poke)=>{
-    //   this.dataSoucer = poke;
-    // })
+    this.nomePokemon =  this.route.snapshot.params.nome;
+    this.pokemonService.obterDetalhes(this.nomePokemon)
+    .subscribe((poke)=>{
+      this.dataSoucer.push(poke);
+    })
 
   }
 

@@ -1,5 +1,5 @@
 <mat-card class="example-card">
-  <mat-card-title>Shiba Inu</mat-card-title>
+  <mat-card-title>Lista de pokemons</mat-card-title>
   <mat-card-content>
     <table mat-table [dataSource]="dataSouce" class="mat-elevation-z8">
       <ng-container matColumnDef="name">
@@ -19,7 +19,11 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr
+        (click)="goPage(row)"
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
     </table>
   </mat-card-content>
   <mat-card-actions>

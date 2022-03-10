@@ -1,4 +1,3 @@
-
   export interface RootObject {
       id: number;
       is_default: boolean;
@@ -8,7 +7,7 @@
       order: number;
       past_types: any[];
       species: any[];
-      sprites: any[];
+      sprites: any;
       stats: any[];
       types: any[];
       weight: number;

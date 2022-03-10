@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { pokemon } from './pokemon';
 import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   dataSouce: pokemon[] = [];
   countPage: number = 20;
   constructor(
-    private pokemonService: HomeService
+    private pokemonService: HomeService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +42,10 @@ export class HomeComponent implements OnInit {
       this.dataSouce = poke.results;
       this.detahlesPokemon(poke.results);
     })
+  }
+
+  goPage(row: pokemon) {
+    this.router.navigate(['/pokemon', row.name]);
   }
 
 }

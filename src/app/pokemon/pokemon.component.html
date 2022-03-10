@@ -1,3 +1,27 @@
 <div class="card">
-  <span></span>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{ dataSoucer[0]?.name }}</mat-card-title>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="dataSoucer[0]?.sprites.other['official-artwork'].front_default"
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-content>
+      <p>
+        Peso: <span>{{ dataSoucer[0]?.weight }}</span>
+      </p>
+      <p>
+        Altura: <span>{{ dataSoucer[0]?.height }}</span>
+      </p>
+      <p>
+        Tipos:
+        <span *ngFor="let item of dataSoucer[0]?.types; let tamanho = index">
+          <span *ngIf="tamanho > 0">,</span>
+          {{ item.type.name }}
+        </span>
+      </p>
+    </mat-card-content>
+  </mat-card>
 </div>

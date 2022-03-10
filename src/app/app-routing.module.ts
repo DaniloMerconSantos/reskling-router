@@ -17,7 +17,10 @@ const routes: Routes = [
 },
 {
   path: 'pokemon/:nome',
-  component: PokemonComponent
+  component: PokemonComponent,
+  data: {
+    title: 'Pokemon'
+  }
 },
 ];
 
