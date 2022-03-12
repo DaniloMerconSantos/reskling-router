@@ -1,7 +1,14 @@
 <div class="card">
   <mat-card class="example-card">
-    <mat-card-header>
+    <mat-card-header class="card-header">
       <mat-card-title>{{ dataSoucer[0]?.name }}</mat-card-title>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        (click)="addFavorito(dataSoucer[0])"
+        *ngIf="!temFavorito; else starLine"
+        >star_outline</mat-icon
+      >
     </mat-card-header>
     <img
       mat-card-image
@@ -25,3 +32,11 @@
     </mat-card-content>
   </mat-card>
 </div>
+<ng-template #starLine>
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Example home icon"
+    (click)="addFavorito(dataSoucer[0])"
+    >star</mat-icon
+  >
+</ng-template>
