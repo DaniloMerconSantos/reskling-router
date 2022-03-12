@@ -31,22 +31,23 @@ export class PokemonComponent implements OnInit {
   }
 
   addFavorito(data: RootObject) {
-    if(this.verificarFavorito(data)) {
-      this.favoritos = this.favoritos.filter(value=>{
-        return value.id != data.id;
-      })
-      console.log(this.favoritos);
-      if(this.favoritos.length == 0 ){
-        localStorage.removeItem('favoritos');
-        return this.temFavorito = false;
-      }
-      this.favoritos.push(data);
+    let favoritos = [];
+    var pokemonsStorage = localStorage.getItem('favoritos');
 
-      return localStorage.setItem('favoritos', JSON.stringify(this.favoritos));
+    if (pokemonsStorage !== null) {
+      favoritos = JSON.parse(pokemonsStorage);
     }
-    this.favoritos.push(data);
-    localStorage.setItem('favoritos', JSON.stringify(this.favoritos));
+    favoritos.push(data);
+
+    const encontrado = favoritos.includes(data.id);
+
+    if (encontrado) {
+      this.verificarFavorito(favoritos);
+      return;
+    }
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
     this.temFavorito = true;
+
   }
 
   verificarFavorito(data: RootObject) {
@@ -54,7 +55,6 @@ export class PokemonComponent implements OnInit {
 
     if(pokemons && data){
       var array: [] = JSON.parse(pokemons);
-
       const poke = array.filter(value=>{
         return value['id'] === data.id;
       })
@@ -63,7 +63,17 @@ export class PokemonComponent implements OnInit {
     return  this.temFavorito = false;
   }
 
-  removeFavorito() {
-    // this.favoritos.splice()
+  deletarPokemon(data: RootObject) {
+    let favoritos = [];
+    const storage = localStorage.getItem('favoritos');
+
+    if (storage !== null) {
+      favoritos = JSON.parse(storage);
+    }
+
+    const dado = favoritos.filter((dados: any) => dados.id != data.id);
+    localStorage.setItem('favoritos', JSON.stringify(dado));
+    this.temFavorito = false;
   }
+
 }
